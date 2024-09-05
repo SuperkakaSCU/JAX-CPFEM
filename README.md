@@ -36,4 +36,7 @@ python -m applications.polycrystal_304steel.polycrystal_304steel
 from the root directory will run the CPFEM example of polycrystal 304 stainless steel. Use [Paraview](https://www.paraview.org/) for visualization.
 
 ## Tutorial
-Tutorial video coming soon
+Tutorial video coming soon!
+
+## Citations
+If you found this library useful in academic or industry work, we appreciate your support if you consider starring the project on Github.
