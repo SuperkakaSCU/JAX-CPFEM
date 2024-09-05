@@ -38,7 +38,7 @@ from the root directory. This is a CPFEM example of polycrystal 304 stainless st
   <img src="docs/materials/polycrystal_304steel_stress.png" width="450px">
 </p>
 <p align="middle">
-    <em >Polycrystal 304 steel (FCC) under tensile loading. A comparison of simulation results between JAX-CPFEM (point) and [MOOSE](https://mooseframework.inl.gov/source/materials/crystal_plasticity/ComputeMultipleCrystalPlasticityStress.html#Asaro:1983kf) (line).</em>
+    <em >Polycrystal 304 steel (FCC) under tensile loading. A comparison of simulation results between JAX-CPFEM (point) and MOOSE (line).</em>
 </p>
 
 ## Tutorial
