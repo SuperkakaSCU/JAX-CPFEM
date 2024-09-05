@@ -26,6 +26,14 @@ JAX-FEM is a collection of several numerical tools, including the Finite Element
 [Neper](https://neper.info/) is a free/open-source software package for polycrystal generation and meshing. It can be used to generate polycrystals with a wide variety of morphological properties. A good [instruction](https://www.youtube.com/watch?v=Wy9n756wFu4&list=PLct8iNZXls-BMU7aleWoSoxgD8OFFe48W&index=5) video is on Youtube.
 
 ### Install JAX-CPFEM
-Place the downloaded file in the `applictionss/` folder of JAX-FEM, and then you can run it.
+Place the downloaded file in the `applications/` folder of JAX-FEM, and then you can run it.
 
 ### Quick Tests
+For example, you can download `polycrystal_304steel/` folder and place it in the `applications/` folder of JAX-FEM, run
+```bash
+python -m applications.polycrystal_304steel.polycrystal_304steel
+```
+from the root directory will run the CPFEM example of polycrystal 304 stainless steel. Use [Paraview](https://www.paraview.org/) for visualization.
+
+## Tutorial
+Tutorial video coming soon
