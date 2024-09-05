@@ -28,8 +28,9 @@ An efficient solution to forward CPFEM with Kalidindi’s hardening law.
 <br>
 
 ### Inverse Design via AD-based sensitivities
+Based on the pipeline combining differentiable JAX-CPFEM with gradient-based optimization, here is a demo of the __initial microstructure design__ of a polycrystal metal featuring the targeted mechanical property after applied deformations.<br>
 :mega: Join us in structure-processing-microstructure design!
-For smart manufacturing, inverse approaches to effectively and efficiently design materials microstructure and/or processing parameters are more desirable. The inverse design uses target properties as input to derive the initial blank geometry, initial microstructure, and subsequent manufacturing process parameters. Here is a demo of the __initial microstructure design__ of a polycrystal metal featuring the targeted mechanical property after applied deformations.
+
 
 <p align="middle">
   <img src="docs/materials/cpfem_ori_design.png" width="800" />
