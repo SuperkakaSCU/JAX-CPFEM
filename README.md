@@ -13,10 +13,11 @@ We want to emphasize the following three features that differential JAX-CPFEM fr
 ### Forward simulations
 An efficient solution to forward CPFEM with Kalidindi’s hardening law.
 <p align="middle">
-  <img src="docs/materials/cpfem_grain_304steel.avi" width="700" />
+  <img src="docs/materials/cpfem_grain_304steel.gif" width="360" />
+  <img src="docs/materials/cpfem_vM_304steel.gif" width="360" />
 </p>
 <p align="middle">
-    <em >A powder bed fusion process considering surface tension, Marangoni effect and recoil pressure.</em>
+    <em >Crystal plasticity: 304 steel grain structure (left) and von Mises stress (right).</em>
 </p>
 
 
@@ -28,7 +29,7 @@ An efficient solution to forward CPFEM with Kalidindi’s hardening law.
 ## Installation
 JAX-CPFEM supports Linux and macOS, which depend on JAX-FEM.
 ### Install JAX-FEM
-JAX-FEM is a collection of several numerical tools, including the Finite Element Method (FEM). See JAX-FEM installation [instructions](https://github.com/deepmodeling/jax-fem?tab=readme-ov-file). Depending on your hardware, you may install the CPU or GPU version of JAX. Both will work, while GPU version usually gives better performance.
+JAX-FEM is a collection of several numerical tools, including the Finite Element Method (FEM). See JAX-FEM installation [instructions](https://github.com/deepmodeling/jax-fem?tab=readme-ov-file). Depending on your hardware, you may install the CPU or GPU version of JAX. Both will work, while the GPU version usually gives better performance.
 
 ### Install Neper
 [Neper](https://neper.info/) is a free/open-source software package for polycrystal generation and meshing. It can be used to generate polycrystals with a wide variety of morphological properties. A good [instruction](https://www.youtube.com/watch?v=Wy9n756wFu4&list=PLct8iNZXls-BMU7aleWoSoxgD8OFFe48W&index=5) video is on Youtube.
