@@ -1,4 +1,4 @@
-JAX-CPFEM: an efficient GPU-computing simulation for differentiable crystal plasticity finite element method (CPFEM), built on top of [JAX-FEM](https://github.com/deepmodeling/jax-fem). Leveraging [JAX](https://github.com/google/jax), this tool addresses the need for inverse design for smart manufacturing. 
+__JAX-CPFEM__: an efficient GPU-computing simulation for differentiable crystal plasticity finite element method (CPFEM), built on top of [JAX-FEM](https://github.com/deepmodeling/jax-fem). Leveraging [JAX](https://github.com/google/jax), this tool addresses the need for inverse design for smart manufacturing. 
 
 ## The concept of differentiable CPFEM
 We want to emphasize the following three features that differential JAX-CPFEM from other CPFEM software:
@@ -12,6 +12,8 @@ We want to emphasize the following three features that differential JAX-CPFEM fr
 ## Applications
 ### Forward simulations
 An efficient solution to forward CPFEM with Kalidindi’s hardening law.
+
+:mega: Join us in considering more constitutive laws! No need for deriving the Jacobian matrix by hand!
 <p align="middle">
   <img src="docs/materials/cpfem_grain_304steel.gif" width="360" />
   <img src="docs/materials/cpfem_vM_304steel.gif" width="360" />
@@ -19,11 +21,22 @@ An efficient solution to forward CPFEM with Kalidindi’s hardening law.
 <p align="middle">
     <em >Crystal plasticity: 304 steel grain structure (left) and von Mises stress (right).</em>
 </p>
-
+<br>
 
 ### Gradient-based calibration of CPFEM model parameters with AD‐based sensitivities
+:mega: Coming soon!
+<br>
 
 ### Inverse Design via AD-based sensitivities
+:mega: Join us in structure-processing-microstructure design!
+For smart manufacturing, inverse approaches to effectively and efficiently design materials microstructure and/or processing parameters are more desirable. The inverse design uses target properties as input to derive the initial blank geometry, initial microstructure, and subsequent manufacturing process parameters. Here is a demo of the __initial microstructure design__ of a polycrystal metal featuring the targeted mechanical property after applied deformations.
+
+<p align="middle">
+  <img src="docs/materials/cpfem_ori_design.png" width="800" />
+</p>
+<p align="middle">
+    <em >Inverse design of the crystal orientation of polycrystalline copper, involving three sequential rotations of Euler angles around the Z, Y, and X axes relative to their initial position.</em>
+</p>
 
 
 ## Installation
