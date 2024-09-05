@@ -34,7 +34,8 @@ For example, you can download `polycrystal_304steel/` folder and place it in the
 python -m applications.polycrystal_304steel.polycrystal_304steel
 ```
 from the root directory. This is a CPFEM example of polycrystal 304 stainless steel under tensile loading. Use [Paraview](https://www.paraview.org/) for visualization.
-![Figure_5b](https://github.com/user-attachments/assets/c9fa4973-d2b5-45fc-b001-b65946eeed31)
+
+<img src="docs/materials/polycrystal_304steel_stress.png" width="300px">
 
 ## Tutorial
 Tutorial video coming soon!
