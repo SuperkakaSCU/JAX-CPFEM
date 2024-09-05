@@ -11,6 +11,14 @@ We want to emphasize the following three features that differential JAX-CPFEM fr
 
 ## Applications
 ### Forward simulations
+An efficient solution to forward CPFEM with Kalidindi’s hardening law.
+<p align="middle">
+  <img src="docs/materials/cpfem_grain_304steel.avi" width="700" />
+</p>
+<p align="middle">
+    <em >A powder bed fusion process considering surface tension, Marangoni effect and recoil pressure.</em>
+</p>
+
 
 ### Gradient-based calibration of CPFEM model parameters with AD‐based sensitivities
 
