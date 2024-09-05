@@ -50,23 +50,22 @@ get_rot_mat_vmap = jax.vmap(get_rot_mat)
 
 class CrystalPlasticity(Problem):
     def custom_init(self, quat, cell_ori_inds):
+        ## Hu: latent hardening r
         r = 1.
+        ## Hu: initial flow stress, unit: MPa
         self.gss_initial = 90.0
-
-        ## Hu: (12, 6)
+        ## Hu: slip system for BCC tantalum
+        ## Hu: 12 in the file, each has 6 elements, the latter 3 -- slip_directions
         input_slip_sys = onp.loadtxt(os.path.join(crt_dir, 'data/csv/input_slip_sys.txt'))
-
         num_slip_sys = len(input_slip_sys)
 
-        ## Hu: (12, 3)
+        
         slip_directions = input_slip_sys[:, self.dim:]
         slip_directions = slip_directions/onp.linalg.norm(slip_directions, axis=1)[:, None]
-        ## Hu: (12, 3)
         slip_normals = input_slip_sys[:, :self.dim]
         slip_normals = slip_normals/onp.linalg.norm(slip_normals, axis=1)[:, None]
 
-        ## Hu: (12, 3, 3)
-        ## out[i, j] = a[i] * b[j], a ((M,) array_like), b ((N,) array_like)
+        
         self.Schmid_tensors = jax.vmap(np.outer)(slip_directions, slip_normals)
 
         self.q = r*onp.ones((num_slip_sys, num_slip_sys))
@@ -76,21 +75,20 @@ class CrystalPlasticity(Problem):
             for j in range(num_directions_per_normal):
                 self.q[i, i//num_directions_per_normal*num_directions_per_normal + j] = 1.
 
-        ## Hu: quat -- ('num_oris', 4)
-        ## Hu: get_rot_mat_vmap(quat) -- ('num_oris', 3, 3)
-        ## Hu: rot_mats -- ('cells', 3, 3)
+        
         rot_mats = onp.array(get_rot_mat_vmap(quat)[cell_ori_inds])
 
         ### Note: for CPFEM, self.num_vars=1, which means fes only have 1 Finite Element object
-
-        ## Hu: Fp_inv_gp.shape: (len(cells), num_quads, 3, 3)
+        ### Multi-physics CPFEM is under study
+        ## Hu: Fp - plastic deformation gradient
         Fp_inv_gp = onp.repeat(onp.repeat(onp.eye(self.dim)[None, None, :, :], len(self.fes[0].cells), axis=0), self.fes[0].num_quads, axis=1)
-        ## Hu: (1en(cells), num_quads, 12) * 60.8
+        ## Hu: slip resistance
         slip_resistance_gp = self.gss_initial*onp.ones((len(self.fes[0].cells), self.fes[0].num_quads, num_slip_sys))
-        ## Hu: (1en(cells), num_quads, 12) * 60.8
+        ## Hu: slip rate
         slip_gp = onp.zeros_like(slip_resistance_gp)
-        ## Hu: rot_mats_gp -- (10648, num_quads, 3, 3)
+        ## Hu: rotation matrix
         rot_mats_gp = onp.repeat(rot_mats[:, None, :, :], self.fes[0].num_quads, axis=1)
+        ## Hu: elastic modulus
         self.C = onp.zeros((self.dim, self.dim, self.dim, self.dim))
 
         ## Hu: unit: MPa
@@ -132,6 +130,8 @@ class CrystalPlasticity(Problem):
         self.C[1, 0, 0, 1] = C44
         self.C[1, 0, 1, 0] = C44
 
+
+        ## Hu: internal variables
         self.internal_vars = [Fp_inv_gp, slip_resistance_gp, slip_gp, rot_mats_gp]
 
     def get_tensor_map(self):
@@ -147,9 +147,9 @@ class CrystalPlasticity(Problem):
         gss_a = 8.0
         ## Hu: reference strain rate
         ao = 0.001
-        ## Hu: rate sensitivity exponent m=0.1
+        ## Hu: rate sensitivity exponent
         xm = 1.0/120.0
-        #xm = 20.0
+        
 
         def get_partial_tensor_map(Fp_inv_old, slip_resistance_old, slip_old, rot_mat):
             _, unflatten_fn = jax.flatten_util.ravel_pytree(Fp_inv_old)
@@ -171,6 +171,7 @@ class CrystalPlasticity(Problem):
                 Fp_inv_new, slip_resistance_new, slip_new, Fe, F = helper(u_grad, Fp_inv_old, slip_resistance_old, slip_old, rot_mat, S)
                 return Fp_inv_new, slip_resistance_new, slip_new, rot_mat
 
+            ## Hu: S-based formulation
             def helper(u_grad, Fp_inv_old, slip_resistance_old, slip_old, rot_mat, S):
                 tau = np.sum(S[None, :, :] * rotate_tensor_rank_2_vmap(rot_mat, self.Schmid_tensors), axis=(1, 2))
                 gamma_inc = ao*self.dt*np.absolute(tau/slip_resistance_old)**(1./xm)*np.sign(tau)
@@ -189,6 +190,7 @@ class CrystalPlasticity(Problem):
                 Fe = F @ Fp_inv_new 
                 return Fp_inv_new, slip_resistance_new, slip_new, Fe, F
 
+            ## Hu: Calculate the residual function
             def implicit_residual(x, y):
                 u_grad, Fp_inv_old, slip_resistance_old, slip_old, rot_mat = unflatten_fn_params(x)
                 S = unflatten_fn(y)
@@ -197,6 +199,7 @@ class CrystalPlasticity(Problem):
                 res, _ = jax.flatten_util.ravel_pytree(S - S_)
                 return res
 
+            ## Hu: inner Newton's method
             @jax.custom_jvp
             def newton_solver(x):
                 # Critical change: The following line causes JAX (version 0.4.13) tracer error
