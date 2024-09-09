@@ -54,7 +54,7 @@ class CrystalPlasticity(Problem):
         r = 1.
         ## Hu: initial flow stress, unit: MPa
         self.gss_initial = 90.0
-        ## Hu: slip system for BCC tantalum
+        ## Hu: slip system for FCC
         ## Hu: 12 in the file, each has 6 elements, the latter 3 -- slip_directions
         input_slip_sys = onp.loadtxt(os.path.join(crt_dir, 'data/csv/input_slip_sys.txt'))
         num_slip_sys = len(input_slip_sys)
