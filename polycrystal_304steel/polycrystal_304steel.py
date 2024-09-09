@@ -224,11 +224,14 @@ def problem():
         problem.set_params(params)
 
 
-        ## Hu: JAX-FEM's solver for outer Newton's methos
-        ## solver(problem, linear=False, precond=True, initial_guess=None, use_petsc=False, 
-        ## petsc_options=None, lagrangian_solver=False, line_search_flag=False)
-        sol_list = solver(problem, initial_guess=sol_list, use_petsc=False)   
-
+        ## Hu: JAX-FEM's solver for outer Newton's method
+        ## solver(problem, solver_options={})
+        ## Examples:
+        ## (1) solver_options = {'jax_solver': {}}
+        ## (2) solver_options = {'umfpack_solver': {}}
+        ## (3) solver_options = {'petsc_solver': {'ksp_type': 'bcgsl', 'pc_type': 'jacobi'}, 'initial_guess': some_guess}
+        sol_list = solver(problem, solver_options={'jax_solver': {}, 'initial_guess': sol_list})   
+        
         ## Hu: Post-processing for aacroscopic Cauchy stress of each cell
         print(f"Computing stress...")
         sigma_cell_data = problem.compute_avg_stress(sol_list[0], params)[:, :, :]
