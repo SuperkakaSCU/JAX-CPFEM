@@ -5,7 +5,7 @@ On top of JAX-CPFEM package, the pipeline integrates AD-based sensitivity analys
 __Case Study 1__: Single crystal copper (FCC) under tensile loading
 
 <p align="middle">
-  <img src="docs/materials/cpfem_calibration_case1.png" width="800" />
+  <img src="/docs/materials/cpfem_calibration_case1.png" width="800" />
 </p>
 <p align="middle">
     <em >Evolution of the objective function with the number of optimization iterations. And the comparison between reference and calibrated simulation results with different objective functions.</em>
