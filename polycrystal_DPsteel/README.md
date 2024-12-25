@@ -13,8 +13,8 @@ from the `jax-fem/` diectory
 ## Results
 Visualized with __ParaWiew__:
 <p align="middle">
-  <img src="docs/materials/polycrystal_DPsteel_phaseID.gif" width="360" />
-  <img src="docs/materials/polycrystal_DPsteel_sigmaZZ.gif" width="360" />
+  <img src="/docs/materials/polycrystal_DPsteel_phaseID.gif" width="360" />
+  <img src="/docs/materials/polycrystal_DPsteel_sigmaZZ.gif" width="360" />
 </p>
 <p align="middle">
     <em >Crystal plasticity: Dual-phase steel phase distribution (left) and z-z component of Cauchy stress (right).</em>
