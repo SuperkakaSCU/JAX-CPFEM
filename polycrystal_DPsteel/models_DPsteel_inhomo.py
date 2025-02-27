@@ -182,7 +182,7 @@ class CrystalPlasticity(Problem):
 
 
         ## Hu: (len(cells), 3, 3, 3, 3)
-        self.C_phase = onp.array([self.C_phase1, self.C_phase0])[self.phase1_array]
+        self.C_phase = onp.array([self.C_phase0, self.C_phase1])[self.phase1_array]
         C_gp = onp.repeat(self.C_phase[:, None, :, :, :, :], self.fes[0].num_quads, axis=1)
 
         ################################################
