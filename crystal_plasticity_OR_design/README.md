@@ -22,7 +22,7 @@ The “optimizer” in the algorithm can use any off-the-shelf gradient-based op
 
 :fire: Here are the results shown in the paper:
 <p align="middle">
-  <img src="/docs/materials/fig09.png" width="800" />
+  <img src="/docs/materials/fig09.jpg" width="800" />
 </p>
 <p align="middle">
     <em >Inverse design of the crystal orientation in polycrystalline copper. Subfigure (a) shows the targeted local mechanical properties (ground truth) of σ`zz` extract from the corner cell under different deformation stage x`i`, represented by black dots. The red dashed line indicates the JAX-CPFEM simulation outputs based on the initial guess for optimization, which significantly deviates from the targeted properties. The purple line represents JAX-CPFEM simulation results based on the crystal orientations designed by gradient-based optimization. The purple line closely aligns with the targeted properties, demonstrating the robustness of our pipeline. Subfigure (b) illustrates the percentage reduction in the objective function value falls within 0.4% with 32 steps.</em>
@@ -30,7 +30,7 @@ The “optimizer” in the algorithm can use any off-the-shelf gradient-based op
 
 
 <p align="middle">
-  <img src="/docs/materials/fig10.png" width="800" />
+  <img src="/docs/materials/fig10.jpg" width="800" />
 </p>
 <p align="middle">
     <em >Inverse design of the initial crystal orientation of polycrystalline copper under deformations, involving three sequential rotations of Euler angles around the Z, Y, and X axes relative to their initial position, applied across all 512 mesh/grains using the differentiable JAX-CPFEM. </em>
