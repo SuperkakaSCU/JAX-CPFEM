@@ -1,5 +1,7 @@
 __JAX-CPFEM__: an efficient GPU-computing simulation for differentiable crystal plasticity finite element method (CPFEM), built on top of [JAX-FEM](https://github.com/deepmodeling/jax-fem). Leveraging [JAX](https://github.com/google/jax), this tool addresses the need for inverse design for smart manufacturing. 
 
+:fire: ***[JAX-PF](https://github.com/SuperkakaSCU/JAX-PF), an efficient GPU-computing simulation for differentiable phase field models was released, with the ecosystem as JAX-CPFEM for doing multiscale simulation***
+
 ## The concept of differentiable CPFEM
 We want to emphasize the following three features that differential JAX-CPFEM from other CPFEM software:
 - __GPU-acceleration__: Efficient solution to forward CPFEM (involving complicated nonlinear relations) with GPU acceleration based on array programming style and matrix formulation.
