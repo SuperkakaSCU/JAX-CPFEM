@@ -15,7 +15,7 @@ __Case Study 1__: Single crystal copper (FCC) under tensile loading
 __Case Study 5__: IN625 under tensile loading
 
 <p align="middle">
-  <img src="/docs/materials/cpfem_calibration_case5.tif" width="800" />
+  <img src="/docs/materials/cpfem_calibration_case5.png" width="800" />
 </p>
 <p align="middle">
     <em >The calibration was performed on a RVE constructured based on EBSD measurement.</em>

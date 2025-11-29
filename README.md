@@ -26,7 +26,12 @@ An efficient solution to forward CPFEM with Kalidindi’s hardening law.
 <br>
 
 ### Gradient-based calibration of CPFEM model parameters with AD‐based sensitivities
-:mega: Coming soon!
+<p align="middle">
+  <img src="/docs/materials/cpfem_calibration_case5.png" width="800" />
+</p>
+<p align="middle">
+    <em >The calibration was performed on a RVE constructured based on EBSD measurement.</em>
+</p>
 <br>
 
 ### Inverse Design via AD-based sensitivities
