@@ -71,3 +71,5 @@ We shared the introduction of JAX-CPFEM at [npj Computational Materials](https:/
 If you found this library useful in academic or industry work, we appreciate your support if you consider 1) starring the project on Github, and 2) citing relevant papers:
 1) Efficient GPU-computing simulation platform JAX-CPFEM for differentiable crystal plasticity finite element method.
    DOI: https://doi.org/10.1038/s41524-025-01528-2
+2) An efficient GPU-accelerated calibration of crystal plasticity model parameters by multi-objective gradient-based optimization with AD‐based sensitivities.
+   DOI: https://doi.org/10.1115/1.4070536

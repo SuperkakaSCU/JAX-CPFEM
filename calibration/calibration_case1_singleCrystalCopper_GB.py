@@ -1,5 +1,8 @@
+### Ref: https://doi.org/10.1115/1.4070536
 ### Hu: An efficient GPU-accelerated calibration of crystal plasticity model parameters by multi-objective optimization 
 ### with automatic differentiation‐based sensitivities
+
+
 ### Hu: Case1: single crystal copper (FCC) under tensile loading -- gradient-based calibration
 ### Hu: 6 Parameters: [slip_resistance_gp, gss_a_gp, h_gp, t_sat_gp, xm_gp, r_gp]
 import jax
@@ -101,7 +104,7 @@ def problem():
     Lx, Ly, Lz = 1., 1., 1.
 
     cell_type = get_meshio_cell_type(ele_type)
-    meshio_mesh = box_mesh(Nx, Ny, Nz, Lx, Ly, Lz, data_dir, ele_type)
+    meshio_mesh = box_mesh(Nx, Ny, Nz, Lx, Ly, Lz)
     mesh = Mesh(meshio_mesh.points, meshio_mesh.cells_dict[cell_type])
 
     ## Hu: Rotation applied on the single crystal
