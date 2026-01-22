@@ -263,7 +263,7 @@ class CrystalPlasticity(Problem):
                 num_directions_per_normal = 3
                 for i in range(self.num_slip_sys):
                     for j in range(num_directions_per_normal):
-                        q.at[i, i//num_directions_per_normal*num_directions_per_normal + j].set(1.)
+                        q = q.at[i, i//num_directions_per_normal*num_directions_per_normal + j].set(1.)
 
 
                 tau = np.sum(S[None, :, :] * rotate_tensor_rank_2_vmap(rot_mat, self.Schmid_tensors), axis=(1, 2))
