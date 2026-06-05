@@ -65,7 +65,7 @@ def pre_processing(pf_args, neper_path='neper'):
 
 
 def problem():
-    print(jax.lib.xla_bridge.get_backend().platform)
+    print(jax.default_backend())
 
 
     pf_args = {}

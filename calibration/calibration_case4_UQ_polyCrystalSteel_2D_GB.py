@@ -96,7 +96,7 @@ def ad_wrapper(problem, solver_options={}, adjoint_solver_options={}):
 
 
 def problem():
-    print(jax.lib.xla_bridge.get_backend().platform)
+    print(jax.default_backend())
 
 
     pf_args = {}
