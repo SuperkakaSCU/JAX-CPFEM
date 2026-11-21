@@ -26,9 +26,9 @@ from jax_fem.utils import save_sol
 from jax_fem import logger
 
 
-from applications.calibration_paper.case4 import CrystalPlasticity
+from applications.calibration.case4 import CrystalPlasticity
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 case_name = 'calibration_case4'
 
@@ -74,7 +74,7 @@ def ad_wrapper(problem, solver_options={}, adjoint_solver_options={}):
         problem.set_params(params)
         initial_guess = problem.initial_guess if hasattr(problem, 'initial_guess') else None
         # sol_list = solver(problem, {'jax_solver':{}, 'initial_guess': initial_guess, 'tol': 1e-7, 'line_search_flag': True})
-        sol_list = solver(problem, solver_options={'umfpack_solver':{}, 'initial_guess': initial_guess, 'tol': 1e-7, 'line_search_flag': True})
+        sol_list = solver(problem, solver_options={'spsolve_solver':{}, 'initial_guess': initial_guess, 'tol': 1e-7, 'line_search_flag': True})
         # sol_list = solver(problem, solver_options={'petsc_solver':{}, 'initial_guess': initial_guess, 'tol': 1e-7, 'line_search_flag': True})
         problem.set_initial_guess(sol_list)
         return sol_list
@@ -87,7 +87,7 @@ def ad_wrapper(problem, solver_options={}, adjoint_solver_options={}):
         logger.info("Running backward and solving the adjoint problem...")
         params, sol_list = res
         # vjp_result = implicit_vjp(problem, sol_list, params, v, adjoint_solver_options={'jax_solver':{}, 'initial_guess': sol_list, 'tol': 1e-7, 'line_search_flag': True})
-        vjp_result = implicit_vjp(problem, sol_list, params, v, adjoint_solver_options={'umfpack_solver':{}, 'initial_guess': sol_list, 'tol': 1e-7, 'line_search_flag': True})
+        vjp_result = implicit_vjp(problem, sol_list, params, v, adjoint_solver_options={'spsolve_solver':{}, 'initial_guess': sol_list, 'tol': 1e-7, 'line_search_flag': True})
 
         return (vjp_result, )
 

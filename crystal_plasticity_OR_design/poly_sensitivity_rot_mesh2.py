@@ -25,7 +25,7 @@ from jax.scipy.spatial.transform import Rotation as R
 
 from applications.crystal_plasticity_OR_design.models_sens_rot import CrystalPlasticity
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 case_name = 'sensitivity'
 
@@ -42,7 +42,7 @@ def rotate_theta_transfer(angle):
     alpha = angle[0]
     beta = angle[1]
     gamma = angle[2]
-    euler_angles = [alpha, beta, gamma]
+    euler_angles = np.array([alpha, beta, gamma])
 
     ## Hu: Create a rotation object using the ZYX convention
     rotation = R.from_euler('zyx', euler_angles, degrees=True)

@@ -7,11 +7,11 @@ You can download `polycrystal_DPsteel/` folder and place it in the `applications
 ```bash
 python -m applications.polycrystal_DPsteel.polycrystal_DPsteel_inhomo
 ```
-from the `jax-fem/` diectory
+from the `jax-fem/` directory
 
 
 ## Results
-Visualized with __ParaWiew__:
+Visualized with __ParaView__:
 <p align="middle">
   <img src="/docs/materials/polycrystal_DPsteel_phaseID.gif" width="360" />
   <img src="/docs/materials/polycrystal_DPsteel_sigmaZZ.gif" width="360" />

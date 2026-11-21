@@ -6,7 +6,7 @@ This section presents a pipeline for inverse design, combining our end-to-end di
 ### AD-based Sensitivity Analysis
 To demonstrate the differentiable capabilities of JAX-CPFEM, we first introduced and verified a sensitivity analysis concerning the grain orientation of each grain in the CPFEM simulation, realized through automatic differentiation (AD). We consider a general copper (FCC) subjected to tensile loadings. The domain dimensions are 0.1 mm × 0.1 mm × 0.1 mm, discretized with 2 × 2 × 2 mesh. The sensitivity calculations for each mesh/cell (No. 1~8) using both AD and FDM-based methods are calculated for sanity check if the derivative is computed correctly.
 
-The solver used in JAX-FEM is also attached to this file.
+The `solver.py` in this folder is a historical copy of the JAX-FEM solver, kept for reference only; the scripts import the solver from the installed JAX-FEM package and do not use this file.
 
 Place the downloaded file in the `applications/` folder of JAX-FEM, and then run
 ```bash

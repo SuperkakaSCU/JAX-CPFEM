@@ -32,7 +32,7 @@ from jax_fem.utils import save_sol
 
 from applications.polycrystal_304steel.models_304steel import CrystalPlasticity
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 
 case_name = 'polycrystal_304steel'
 

@@ -18,7 +18,7 @@ from jax_fem.utils import save_sol
 
 from applications.singlecrystal_copper.models_copper import CrystalPlasticity
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 
 case_name = 'singlecrystal_copper'
 

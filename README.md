@@ -52,6 +52,8 @@ JAX-CPFEM supports Linux and macOS, which depend on JAX-FEM.
 ### Install JAX-FEM
 JAX-FEM is a collection of several numerical tools, including the Finite Element Method (FEM). See JAX-FEM installation [instructions](https://github.com/deepmodeling/jax-fem?tab=readme-ov-file). Depending on your hardware, you may install the CPU or GPU version of JAX. Both will work, while the GPU version usually gives better performance.
 
+JAX-CPFEM has been tested with JAX-FEM 0.0.12 (commit `01d11bd`, November 2026) and JAX 0.12.1 (Python 3.13, CUDA 13). The calibration scripts select the direct linear solver through the JAX-FEM `solver_options` key `spsolve_solver` (introduced in JAX-FEM in April 2026, replacing `umfpack_solver`); older JAX-FEM releases are not supported.
+
 ### Install Neper
 [Neper](https://neper.info/) is a free/open-source software package for polycrystal generation and meshing. It can be used to generate polycrystals with a wide variety of morphological properties. A good [instruction](https://www.youtube.com/watch?v=Wy9n756wFu4&list=PLct8iNZXls-BMU7aleWoSoxgD8OFFe48W&index=5) video is on Youtube.
 
@@ -61,9 +63,9 @@ Place the downloaded file in the `applications/` folder of JAX-FEM, and then you
 ### Quick Tests
 For example, you can download `polycrystal_304steel/` folder and place it in the `applications/` folder of JAX-FEM, run
 ```bash
-python -m applications.polycrystal_304steel.polycrystal_304steel
+CUDA_VISIBLE_DEVICES=0 python -m applications.polycrystal_304steel.polycrystal_304steel
 ```
-from the root directory. This is a CPFEM example of polycrystal 304 stainless steel under tensile loading. Use [Paraview](https://www.paraview.org/) for visualization.
+from the root directory. The scripts do not pin a GPU: on a multi-GPU machine, choose the device with the `CUDA_VISIBLE_DEVICES` environment variable (and set `XLA_PYTHON_CLIENT_PREALLOCATE=false` if the GPU is shared with other jobs). This is a CPFEM example of polycrystal 304 stainless steel under tensile loading. Use [Paraview](https://www.paraview.org/) for visualization.
 <p align="middle">
   <img src="docs/materials/polycrystal_304steel_stress.png" width="450px">
 </p>

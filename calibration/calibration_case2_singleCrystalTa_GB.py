@@ -25,9 +25,9 @@ from jax_fem.generate_mesh import Mesh, box_mesh, get_meshio_cell_type
 from jax_fem.utils import save_sol
 from jax_fem import logger
 
-from applications.calibration_paper.case2 import CrystalPlasticity
+from applications.calibration.case2 import CrystalPlasticity
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 case_name = 'calibration_case2'
 

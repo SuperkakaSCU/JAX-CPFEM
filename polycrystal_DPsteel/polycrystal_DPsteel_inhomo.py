@@ -24,7 +24,7 @@ from applications.polycrystal_DPsteel.models_DPsteel_inhomo import CrystalPlasti
 
 
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 
 case_name = 'polycrystal_DPsteel'
 

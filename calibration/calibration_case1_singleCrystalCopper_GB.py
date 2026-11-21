@@ -30,7 +30,7 @@ from jax_fem import logger
 from applications.calibration.case1 import CrystalPlasticity
 
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 case_name = 'calibration_case1'
 
 
